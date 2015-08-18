@@ -84,15 +84,12 @@ public class FryBlock extends Block {
 		return 8;
 	}
 
-	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess,
-			int par2, int par3, int par4) {
-		float f = 0.0000F;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.0F, f, 0.0F);
+	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z,
-			Entity entity) {
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		entity.attackEntityFrom(DamageSource.inFire, 2.5F);
 	}
 }

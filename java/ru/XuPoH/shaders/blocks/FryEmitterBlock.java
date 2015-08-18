@@ -65,7 +65,14 @@ public class FryEmitterBlock extends BlockContainer {
 		Block block = (Block) ItemsBlocksCollection.fryBlock.setEmitterPos(x, y, z);
 		
 		for (int j = 1; j < FRY_HEIGHT; ++j) {
+			if (world.getBlock(x, y + j, z).getMaterial() == Material.air) {
+				connectedBlocksPositions.clear();
+				
+				break;
+			}
+			
 			Vec3 vec = Vec3.createVectorHelper(x, y + j, z);
+			
 			ShadersMod.logger.info(vec.toString() + " is the position ");
 			world.setBlock(x, y + j, z, block);
 			
@@ -77,10 +84,8 @@ public class FryEmitterBlock extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if (!world.isRemote) {
 			FryEmitterTileEntity t = (FryEmitterTileEntity) world.getTileEntity(x, y, z);
             t.processActivate(player, world);
-		}
 		
 		return true;
 	}

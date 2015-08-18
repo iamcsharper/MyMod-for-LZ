@@ -1,0 +1,9 @@
+#Items
+item.LZ_anomalyCheckerItem.name=Anomaly Checker
+#Blocks
+tile.LZ_fryEmitter.name=Fry Emitter
+tile.LZ_fryEmitter.description=Need to be generated! Or placed manually. Generates fry!
+tile.LZ_fryBlock.name=Fry Block
+tile.LZ_fryBlock.description=Fires up player which collides with it
+#Creative tabs
+itemGroup.anomalyTab=Anomalies tab

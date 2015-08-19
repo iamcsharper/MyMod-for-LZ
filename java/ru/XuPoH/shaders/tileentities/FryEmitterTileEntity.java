@@ -7,6 +7,8 @@ import net.minecraft.world.World;
 import ru.XuPoH.shaders.ShadersMod;
 import ru.XuPoH.shaders.blocks.FryEmitterBlock;
 import scala.actors.threadpool.Arrays;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class FryEmitterTileEntity extends TileEntity {
 	private String[] lastVisitors = new String[FryEmitterBlock.MAX_VISITORS];
@@ -20,13 +22,18 @@ public class FryEmitterTileEntity extends TileEntity {
 	}
 
 	public void processActivate(EntityPlayer player, World world) {
+		
 		for (int i = 0; i < lastVisitors.length; ++i) {
 			if (i > 0) {
 				lastVisitors[i - 1] = lastVisitors[i];
 			}
+			
+			if (i == lastVisitors.length - 1) {
+				lastVisitors[i] = player.getCommandSenderName();
+			}
 		}
 
-		ShadersMod.logger.debug(Arrays.toString(lastVisitors));
+		ShadersMod.logger.info(Arrays.toString(lastVisitors));
 	}
 
 	@Override
